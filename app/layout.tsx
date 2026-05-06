@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Rights Tracker - Credit & Loan Management System",
   description: "Comprehensive credit tracking, login desk management, and MIS reporting system",
   keywords: "credit tracker, loan management, MIS tracker, banking",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

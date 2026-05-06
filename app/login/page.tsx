@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, LogIn, Lock, Mail, TrendingUp, Users, BarChart3, FileText } from 'lucide-react'
 import toast from 'react-hot-toast'
+import LoginChatbot from '@/components/LoginChatbot'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -261,6 +262,9 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
+
+      {/* Floating chatbot */}
+      <LoginChatbot />
     </div>
   )
 }
