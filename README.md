@@ -1,36 +1,227 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rights Tracker
 
-## Getting Started
+A comprehensive rights and credit tracker application for managing loans, cases, and user profiles with real-time updates.
 
-First, run the development server:
+**Created by:** Nitish
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📋 Features
+
+- 🔐 **User Authentication** - Secure login with role-based access control
+- 💳 **Credit Tracker** - Manage loan cases with detailed tracking
+- 📊 **Dashboard** - Real-time analytics and case summaries
+- 👥 **User Management** - Admin controls for user creation and permissions
+- 📤 **Import/Export** - Excel file support with duplicate detection
+- 🔄 **Real-time Updates** - Live data synchronization
+- 🏢 **Multi-Branch Support** - Branch-based data segregation
+- 📱 **Responsive UI** - Mobile-friendly interface
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technologies |
+|----------|---------------|
+| **Frontend** | Next.js 16, React, TypeScript, Tailwind CSS |
+| **Backend** | Next.js API Routes, Node.js |
+| **Database** | Supabase (PostgreSQL) |
+| **Authentication** | Supabase Auth |
+| **File Processing** | XLSX (Excel) |
+| **UI Components** | Lucide React Icons, React Hot Toast |
+| **Build Tool** | Turbopack |
+
+---
+
+## 📊 Application Workflow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     RIGHTS TRACKER FLOW                      │
+└─────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐
+    │  User Login  │
+    └──────┬───────┘
+           │
+           ▼
+    ┌──────────────────┐
+    │  Authentication  │
+    │  (Supabase Auth) │
+    └────────┬─────────┘
+             │
+        ┌────┴────┐
+        │          │
+        ▼          ▼
+    ┌────────┐  ┌────────┐
+    │ Admin  │  │  User  │
+    └───┬────┘  └───┬────┘
+        │           │
+        ▼           ▼
+    ┌───────────────────────────┐
+    │     Dashboard Page        │
+    │  • MIS Reports            │
+    │  • MIS Tracker            │
+    │  • Last 6 Months          │
+    │  • Credit Tracker         │
+    │  • Admin Settings (Admin) │
+    │  • User Management (Admin)│
+    └─────────┬─────────────────┘
+              │
+    ┌─────────┴──────────┐
+    │                    │
+    ▼                    ▼
+┌─────────────┐   ┌─────────────────┐
+│   View      │   │   CRUD          │
+│   Data      │   │   Operations    │
+└──────┬──────┘   └────────┬────────┘
+       │                   │
+       └───────────┬───────┘
+                   │
+        ┌──────────┴─────────┐
+        │                    │
+        ▼                    ▼
+    ┌────────────┐    ┌─────────────┐
+    │Import/     │    │  Real-time  │
+    │Export      │    │  Updates    │
+    │(Excel)     │    │ (via        │
+    │            │    │  Supabase   │
+    └────────┬───┘    │ Realtime)   │
+             │        └──────┬──────┘
+             │               │
+             └───────────┬───┘
+                        │
+                        ▼
+                ┌──────────────────┐
+                │   Supabase DB    │
+                │  (PostgreSQL)    │
+                └──────────────────┘
+                  │        │       │
+        ┌─────────┼────────┼───────┘
+        │         │        │
+        ▼         ▼        ▼
+    ┌────────┐ ┌───────┐ ┌──────────┐
+    │ Users  │ │Cases  │ │Branches  │
+    └────────┘ └───────┘ └──────────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+rights-tracker/
+├── app/
+│   ├── api/                    # API Routes
+│   │   ├── admin/             # Admin endpoints
+│   │   └── profile/           # Profile endpoints
+│   ├── (dashboard)/           # Dashboard layout group
+│   │   ├── admin/             # Admin features
+│   │   ├── credit-tracker/    # Credit management
+│   │   ├── mis-reports/       # Reports
+│   │   └── ...
+│   ├── login/                 # Authentication page
+│   ├── setup/                 # Setup page
+│   └── layout.tsx
+├── components/                # Reusable components
+│   ├── Header.tsx
+│   ├── Sidebar.tsx
+│   └── ...
+├── lib/
+│   └── supabase/             # Database clients
+│       ├── client.ts          # Client-side Supabase
+│       └── server.ts          # Server-side Supabase
+├── supabase/
+│   └── schema.sql            # Database schema
+├── package.json
+├── tsconfig.json
+└── next.config.ts
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Supabase account
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd rights-tracker
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Setup environment variables**
+   Create a `.env.local` file in the project root:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the application**
+   Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📦 Available Scripts
+
+```bash
+# Development server
+npm run dev
+
+# Production build
+npm run build
+
+# Start production server
+npm run start
+
+# Linting
+npm run lint
+```
+
+---
+
+## 🗄️ Database Schema
+
+The application uses PostgreSQL (via Supabase) with the following main tables:
+- **users** - User authentication
+- **user_profiles** - User profile data and roles
+- **branches** - Branch information
+- **credit_tracker** - Credit case records
+- **imports** - Import history and logs
+
+See `supabase/schema.sql` for complete schema details.
+
+---
+
+## 🔐 Authentication & Authorization
+
+- Role-based access control (Admin, Editor, Viewer)
+- Supabase authentication
+- Branch-level data segregation
+- Permission-based feature access
+
+---
+
+## 📝 License
+
+This project is private and confidential.
+
+---
+
+**Created by:** Nitish  
+**Last Updated:** May 2026
