@@ -30,7 +30,7 @@ const FAQ: Record<string, { answer: string; options?: Option[] }> = {
   },
   login_help: {
     answer:
-      '🔐 **Login Help**\n\nTo sign in:\n1. Enter your registered **email address**\n2. Enter your **password**\n3. Click **Sign In**\n\n🔒 Your credentials are provided by your branch administrator. If you've forgotten your password, contact the admin.',
+      '🔐 **Login Help**\n\nTo sign in:\n1. Enter your registered **email address**\n2. Enter your **password**\n3. Click **Sign In**\n\n🔒 Your credentials are provided by your branch administrator. If you\'ve forgotten your password, contact the admin.',
     options: [
       { label: '📧 Who provides my credentials?', value: 'credentials_info' },
       { label: '🔑 Forgot password?',             value: 'forgot_password' },
